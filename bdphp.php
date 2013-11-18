@@ -1,11 +1,11 @@
 <?php
 // bdphp.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP
-// 
+//
 // Made by Valentin Carriere
 // Login   <carrie_v@etna-alternance.net>
-// 
+//
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Mon Nov 18 10:40:12 2013 Valentin Carriere
+// Last update Mon Nov 18 11:49:37 2013 Valentin Carriere
 //
 require_once('./include/affichage.php');
 require_once('./include/cut.php');
