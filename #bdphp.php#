@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Mon Nov 18 17:12:06 2013 camille pire
+// Last update Mon Nov 18 17:05:41 2013 camille pire
 //
 require_once('./include/include.php');
 error_reporting (E_ALL);
@@ -14,12 +14,13 @@ $fd = fopen('php://stdin', 'r');
 if ($fd !== false)
   {
     aff_prompt();
-    while (($line = strtolower(fgets($fd))) !== false)
+    while (($line = fgets($fd)) !== false)
       {
 	$params = decoup_params($line);
-	if (strcmp($params[0], "quit;") == 1)
+	if (strcmp(strtolower($params[0]), "quit;") == 1
+	    || strtolower($params[0]) == "quit;")
 	  exit;
-	parse_sql($params);
+	parse_sql($param);
 	aff_prompt();
       }
   }
