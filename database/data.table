@@ -1,0 +1,15 @@
+id=
+type=integer
+option=primary_key
+
+nom=
+type=string
+option=not_null
+
+pnom=
+type=string
+option=
+
+age=
+type=integer
+option=
