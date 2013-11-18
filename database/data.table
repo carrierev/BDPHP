@@ -1,1 +1,2 @@
 --nom_database--
+mabite;id,int,primary_key;nom,char,not_null;taille,int,;./table/mabite.table
