@@ -5,11 +5,14 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:42 2013 camille pire
-// Last update Tue Nov 19 13:04:57 2013 camille pire
+// Last update Tue Nov 19 13:39:16 2013 camille pire
 //
 
 //ecriture dans la base
 
-function	write_db()
+function	write_db($name, $str)
 {
+  $fd = fopen($name, 'w');
+  fwrite($fd, $str);
+  fclose($fd);
 }
