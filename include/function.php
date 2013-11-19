@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Tue Nov 19 16:38:38 2013 camille pire
-// Last update Tue Nov 19 17:01:36 2013 camille pire
+// Last update Tue Nov 19 17:27:05 2013 camille pire
 //
 
 function	createTab($cmd, $file)
@@ -16,7 +16,7 @@ function	createTab($cmd, $file)
   for ($i = 4; isset($cmd[$i + 1]); $i++)
     {
       if ($cmd[$i] != ',')
-	if ($cmd[$i + 1] == ',')
+	if ($cmd[$i + 1] == ',' || $cmd[$i + 1] == ')')
 	  $dbline .= $cmd[$i] . ';';
 	else
 	  $dbline .= $cmd[$i] . ',';
