@@ -5,3 +5,4 @@ table;test,int,./database/table/table.table#
 mabite;id,int,not_null;nom,string,./database/table/mabite.table#
 wesh;wesh,wesh,wesh;wesh,wesh,./database/table/wesh.table#
 
+rienafoutre;fifou,fifa,fitou;fita,feta,foueta;./database/table/rienafoutre.table#

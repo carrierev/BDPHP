@@ -5,14 +5,14 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Mon Nov 18 10:31:24 2013 Valentin Carriere
-// Last update Tue Nov 19 17:11:10 2013 Valentin Carriere
+// Last update Tue Nov 19 17:51:08 2013 Valentin Carriere
 //
 error_reporting (E_ALL);
 function        aff_prompt()
 {
   echo "$> ";
 }
-/*
+
 function	desc($cmd, $file)
 {
   $tablename = $cmd[2];
@@ -28,7 +28,7 @@ function	desc($cmd, $file)
   else
     echo "Cannot read table\n";
 }
-
+/*
 echo ("------- TABLE '" . $tablename . "' -------");
 'id'	integer	PRIMARY_KEY
 'nom'	string	NOT_NULL
