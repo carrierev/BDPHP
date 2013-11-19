@@ -13,6 +13,6 @@
 function	write_db($name, $str)
 {
   $fd = fopen($name, 'a+');
-  fwrite($fd, ($str . "\n"));
+  fwrite($fd, ($str));
   fclose($fd);
 }

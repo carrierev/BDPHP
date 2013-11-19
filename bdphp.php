@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Tue Nov 19 13:46:26 2013 camille pire
+// Last update Tue Nov 19 14:15:14 2013 camille pire
 require_once('./include/include.php');
 error_reporting (E_ALL);
 
@@ -24,7 +24,9 @@ if ($fd !== false)
 	  exit;
 	$cmd = parse_sql($params, $fd);
 	file_create('./database/', 'db.table');
-	write_db('./database/db.table', "--database_name--\neleve;id,int,pk;nom,char,;./database/table/eleve.table#");
+	$tmp = $cmd[1]."\n";
+	echo $tmp;
+	write_db('./database/db.table', $tmp);
 	aff_prompt();
       }
   }
