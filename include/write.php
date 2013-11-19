@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:42 2013 camille pire
-// Last update Tue Nov 19 17:07:54 2013 Valentin Carriere
+// Last update Tue Nov 19 17:47:45 2013 camille pire
 //
 
 //ecriture dans la base
@@ -18,3 +18,10 @@ function	write_db($name, $str)
   fclose($fd);
 }
 
+function	write_tb($name, $str)
+{
+  $fd = fopen('./database/table/' . $name, 'a+');
+  fwrite($fd, $str);
+  fwrite($fd, "\n");
+  fclose($fd);
+}
