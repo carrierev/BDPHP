@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:31:24 2013 Valentin Carriere
-// Last update Tue Nov 19 19:42:57 2013 camille pire
+// Last update Tue Nov 19 19:57:56 2013 camille pire
 //
 
 function        aff_prompt()
@@ -17,6 +17,16 @@ function	multi_echo($char, $nb)
 {
   for ($i = 0; $i <= $nb; $i++)
     echo $char;
+}
+
+function	echo_tab($tab, $size, $option)
+{
+  for ($i = 0; isset($tab[$i]) && $option == 'simple'; $i++)
+    {
+      echo "| " . $tab[$i];
+      multi_echo(' ', ($size - strlen($tab[$i]) + 1));
+      echo " |\n";
+    }
 }
 
 function	print_tab($title, $tab)
@@ -37,12 +47,7 @@ function	print_tab($title, $tab)
   echo "+";
   multi_echo('-', $size + 3);
   echo "+\n";
-  for ($i = 0; isset($tab[$i]); $i++)
-    {
-      echo "| " . $tab[$i];
-      multi_echo(' ', ($size - strlen($tab[$i]) + 1));
-      echo " |\n";
-    }
+  echo_tab($tab, $size, 'simple');
   echo "+";
   multi_echo('-', $size + 3);
   echo "+\n" . $i ." rows in set\n";
