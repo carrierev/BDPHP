@@ -5,8 +5,12 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:13 2013 camille pire
-// Last update Tue Nov 19 11:28:24 2013 camille pire
+// Last update Tue Nov 19 12:57:54 2013 camille pire
 //
+
+//la fonction parse_sql verifie qu'il y a bien un point virgule en fin de ligne
+//puis elle met toutes les commandes sql dans un tableaux sans les espaces, les
+// tabulations et le point virgule
 
 function	parse_sql(&$param, $fd)
 {
