@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Tue Nov 19 10:32:11 2013 Valentin Carriere
-// Last update Tue Nov 19 13:47:52 2013 Valentin Carriere
+// Last update Tue Nov 19 17:10:41 2013 Valentin Carriere
 //
 error_reporting (E_ALL);
 
@@ -16,11 +16,13 @@ function	check_argc($argc)
       echo "Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n";
       return (0);
     }
+  else
+    return (1);
 }
 
 function	is_options($argc, $argv)
 {
-  if (!check_argc($argc))
+  if (check_argc($argc) == 0)
     return (0);
   if (in_array("-i", $argv))
     {
