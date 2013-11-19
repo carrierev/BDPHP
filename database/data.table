@@ -3,3 +3,4 @@ mabite;id,int,primary_key;nom,char,not_null;taille,int,;./table/mabite.table
 test;test,test,test,./database/table/test.table#
 table;test,int,./database/table/table.table#
 mabite;id,int,not_null;nom,string,./database/table/mabite.table#
+chloe;id,int,pk;nom,char,nn;./database/table/chloe.table#
