@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Tue Nov 19 16:38:38 2013 camille pire
-// Last update Tue Nov 19 16:59:09 2013 camille pire
+// Last update Tue Nov 19 17:01:36 2013 camille pire
 //
 
 function	createTab($cmd, $file)
@@ -22,5 +22,5 @@ function	createTab($cmd, $file)
 	  $dbline .= $cmd[$i] . ',';
     }
   $dbline .= './database/table/' . $file_name . '#';
-  write_db('./database/' . $file[0] . '.table', $dbline);
+  write_db($file[0], $dbline);
 }
