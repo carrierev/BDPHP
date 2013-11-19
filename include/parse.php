@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:13 2013 camille pire
-// Last update Tue Nov 19 10:22:06 2013 camille pire
+// Last update Tue Nov 19 10:37:40 2013 camille pire
 //
 
 function	parse_sql(&$param, $fd)
@@ -19,6 +19,12 @@ function	parse_sql(&$param, $fd)
       $param = decoup_params(strtolower(fgets($fd)));
       $in[$i] = $param;
     }
-  print_r($in);
+  for ($i = 0; isset($in[$i]); $i++)
+    for ($j = 0; isset($in[$i][$j]); $j++)
+      if ($in[$i][$j] != ''
+	  && !preg_match_all('#^ +$#', $in[$i][$j], $tab)
+	  && !preg_match_all('#;$#', $in[$i][$j], $tab))
+	$res[] = $in[$i][$j];
+  print_r($res);
   return ;
 }
