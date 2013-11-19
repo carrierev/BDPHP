@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:13 2013 camille pire
-// Last update Tue Nov 19 15:12:52 2013 camille pire
+// Last update Tue Nov 19 16:12:17 2013 camille pire
 //
 
 //la fonction parse_sql verifie qu'il y a bien un point virgule en fin de ligne
@@ -24,20 +24,18 @@ function	parse_sql(&$param, $fd)
   for ($i = 0; isset($in[$i]); $i++)
     for ($j = 0; isset($in[$i][$j]); $j++)
       {
+	$test = '';
 	$in[$i][$j] = preg_replace('#\\n$|;$#', '', $in[$i][$j]);
-	if ($in[$i][$j] != ''
-	    && !preg_match_all('#^ +$#', $in[$i][$j], $tab))
+	if (preg_match_all('#,$#', $in[$i][$j], $tab))
 	  {
-	    if (preg_match_all('#,$#', $in[$i][$j], $tab))
-	      {
-		$in[$i][$j] = preg_replace('#,$#', '', $in[$i][$j]);
-		$res[] = $in[$i][$j];
-		$res[] = ",";
-	      }
-	    else
-	      $res[] = $in[$i][$j];
+	    $in[$i][$j] = preg_replace('# +|,$#', '', $in[$i][$j]);
+	    $test = ",";
 	  }
+	if ($in[$i][$j] != '' && !preg_match_all('#^ +$#', $in[$i][$j], $tab))
+	  $res[] = $in[$i][$j];
+	if ($test == ',')
+	  $res[] = $test;
       }
   if (isset($res))
-      return $res;
+    return $res;
 }
