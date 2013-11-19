@@ -5,11 +5,14 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Tue Nov 19 10:50:13 2013 camille pire
+// Last update Tue Nov 19 11:46:57 2013 Valentin Carriere
 //
 require_once('./include/include.php');
 error_reporting (E_ALL);
-
+if (is_options($argc, $argv) == 0)
+  exit (0);
+else
+  $file_options = is_options($argc, $argv);
 $fd = fopen('php://stdin', 'r');
 if ($fd !== false)
   {
