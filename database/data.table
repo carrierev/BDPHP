@@ -6,3 +6,5 @@ biteaaaaaaaaaaaaaaaaa;id,int,not_null;nom,string,./database/table/mabite.table#
 wesh;wesh,wesh,wesh;wesh,wesh,./database/table/wesh.table#
 rienafoutre;fifou,fifa,;fita,feta,foueta;./database/table/rienafoutre.table#
 chloe;id,int,pk;nom,char,nn;./database/table/chloe.table#
+truc;integer,primary_key;string,not_null;./database/table/truc.table#
+tr;tes,integer,primary_key;nom,string,not_null;ch,float,./database/table/tr.table#
