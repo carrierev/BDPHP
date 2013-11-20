@@ -5,3 +5,4 @@ table;test,int,./database/table/table.table#
 wesh;wesh,wesh,wesh;wesh,wesh,./database/table/wesh.table#
 rienafoutre;fifou,fifa,;fita,feta,foueta;./database/table/rienafoutre.table#
 chloe;id,int,pk;nom,char,nn;./database/table/chloe.table#
+zetest;id,int,pk;testze,string;./database/table/zetest.table#
