@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Wed Nov 20 11:38:39 2013 camille pire
+// Last update Wed Nov 20 11:53:11 2013 camille pire
 //
 
 function	read_db($path)
@@ -55,16 +55,15 @@ function        desctab($file, $cmd)
       if (preg_match_all('#([^;]+);#', $lines[$i], $tab[$i]))
 	if ($tab[$i][0][0] == $cmd[1] . ';')
 	  $res[] = $tab[$i][1];
-	else
-	  {
-	    echo  "Unknown table '" . $cmd[1] . "' in " . $file[0] . "\n";
-	    return ;
-	  }
+    }
+  if (!isset($res))
+    {
+      echo  "Unknown table '" . $cmd[1] . "' in " . $file[0] . "\n";
+      return ;
     }
   if (isset($res))
     {
       $title = $res[0][0];
-      echo $title ."\n";
       for ($i = 1; isset($res[0][$i]); $i++)
 	{
 	  preg_match_all('#([^,]+)#', $res[0][$i], $tab2[$i]);
