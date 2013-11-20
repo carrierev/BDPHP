@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Wed Nov 20 11:36:48 2013 camille pire
+// Last update Wed Nov 20 11:38:39 2013 camille pire
 //
 
 function	read_db($path)
@@ -57,7 +57,7 @@ function        desctab($file, $cmd)
 	  $res[] = $tab[$i][1];
 	else
 	  {
-	    echo  'Unknown table ' . $cmd[1] . "\' in " . $file[0];
+	    echo  "Unknown table '" . $cmd[1] . "' in " . $file[0] . "\n";
 	    return ;
 	  }
     }
