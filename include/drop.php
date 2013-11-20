@@ -5,12 +5,11 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:04:08 2013 camille pire
-// Last update Wed Nov 20 11:35:28 2013 Valentin Carriere
+// Last update Wed Nov 20 11:37:14 2013 Valentin Carriere
 //
 function	drop($file, $cmd)
 {
   $lines = read_db($file[0]);
-  print_r($lines);
   for ($i = 0; isset($lines[$i]); $i++)
     {
       if (preg_match_all('#^([^;]+);#', $lines[$i], $res))
