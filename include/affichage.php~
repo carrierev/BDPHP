@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:31:24 2013 Valentin Carriere
-// Last update Wed Nov 20 09:30:47 2013 Valentin Carriere
+// Last update Wed Nov 20 11:11:20 2013 camille pire
 //
 
 function        aff_prompt()
@@ -17,6 +17,14 @@ function	multi_echo($char, $nb)
 {
   for ($i = 0; $i <= $nb; $i++)
     echo $char;
+}
+
+function	multi_echo_ret($char, $nb)
+{
+  $tmp = null;
+  for ($i = 0; $i <= $nb; $i++)
+    $tmp .= $char;
+  return $tmp;
 }
 
 function	echo_tab($tab, $size, $option)
@@ -51,20 +59,4 @@ function	print_tab($title, $tab)
   echo "+";
   multi_echo('-', $size + 3);
   echo "+\n" . $i ." rows in set\n";
-}
-
-function	desc($cmd, $file)
-{
-  $tablename = $cmd[2];
-  $fd = fopen('/database/table/' . $tablename . "table", 'r');
-  if ($fd != false)
-    {
-      $i = filesize($file);
-      $temp = fread($fd, $i);
-      if ($temp != false)
-	echo $temp;
-      fclose($fd);
-    }
-  else
-    echo "Cannot read table\n";
 }
