@@ -1,13 +1,13 @@
 <?php
-// truncate.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP/include
+// delete.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP/include
 // 
 // Made by Valentin Carriere
 // Login   <carrie_v@etna-alternance.net>
 // 
-// Started on  Wed Nov 20 12:27:00 2013 Valentin Carriere
-// Last update Wed Nov 20 15:23:54 2013 Valentin Carriere
+// Started on  Wed Nov 20 15:22:02 2013 Valentin Carriere
+// Last update Wed Nov 20 15:27:32 2013 Valentin Carriere
 //
-function        truncate($file, $cmd)
+function	delete($file, $cmd)
 {
   $bool = false;
   $lines = read_db($file[0]);
@@ -15,7 +15,7 @@ function        truncate($file, $cmd)
     {
       if (preg_match_all('#^([^;]+);#', $lines[$i], $res))
         if ($res[1][0] == $cmd[1])
-	  $bool = true;
+          $bool = true;
     }
   if ($bool != true)
     {
@@ -23,20 +23,15 @@ function        truncate($file, $cmd)
       return ;
     }
   else
-    truncateTable($cmd, $file);
+    deleteElement($cmd, $file);
 }
 
-function        truncateTable($cmd, $file)
+function        deleteElement($cmd, $file)
 {
   $ptr = fopen("./database/table/" . $cmd[1] . ".table", "r");
   $contenu = fread($ptr, filesize("./database/table/" . $cmd[1] . ".table"));
   fclose($ptr);
   $contenu = explode(PHP_EOL, $contenu);
-  if (!isset($contenu[1]))
-    {
-      echo "Table : '" . $cmd[1] . "' already empty\n";
-      return (0);
-    }
   for ($i = 1; isset($contenu[$i]); $i++)
     unset($contenu[$i]);
   $contenu = array_values($contenu);
@@ -46,3 +41,4 @@ function        truncateTable($cmd, $file)
   fclose($ptr);
   echo "Table : '" . $cmd[1] . "' truncated\n";
 }
+

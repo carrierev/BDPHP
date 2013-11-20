@@ -5,10 +5,11 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 13:16:09 2013 camille pire
-// Last update Wed Nov 20 14:43:21 2013 Valentin Carriere
+// Last update Wed Nov 20 15:24:38 2013 Valentin Carriere
 //
 
 // include des differents fichier php
+require_once('./include/delete.php');
 require_once('./include/truncate.php');
 require_once('./include/help.php');
 require_once('./include/show.php');
