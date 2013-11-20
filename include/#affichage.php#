@@ -56,7 +56,7 @@ function	print_tab($title, $tab)
 function	desc($cmd, $file)
 {
   $tablename = $cmd[2];
-  $fd = fopen('/database/table/' . $tablename . "table", 'r');
+  $fd = fopen('/database/data.table', 'r');
   if ($fd != false)
     {
       $i = filesize($file);
