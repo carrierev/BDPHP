@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Wed Nov 20 10:12:12 2013 camille pire
+// Last update Wed Nov 20 10:37:41 2013 camille pire
 //
 
 function	read_db($path)
@@ -33,9 +33,18 @@ function	desctab($file, $cmd)
   for ($i = 0; isset($lines[$i]); $i++)
     {
       preg_match_all('#([^;]+);#', $lines[$i], $tab[$i]);
-      if ($tab[$i][0][0] == $cmd[1] . ";")
-	$res = $tab[$i][0];
+      if ($tab[$i][0][0] == $cmd[1] . ';')
+	$res[] = $tab[$i][1];
     }
   if (isset($res))
-  print_r($res);
+    {
+      $title = $res[0][0];
+      echo $title ."\n";
+      for ($i = 1; isset($res[0][$i]); $i++)
+	{
+      preg_match_all('#([^,]+)#', $res[0][$i], $tab2[$i]);
+      $table[] = $tab2[$i][1];
+	}
+    }
+  print_r($table);
 }
