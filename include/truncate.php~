@@ -1,3 +1,4 @@
+#!/usr/local/bin/php
 <?php
 // truncate.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP/include
 // 
@@ -5,7 +6,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 12:27:00 2013 Valentin Carriere
-// Last update Wed Nov 20 14:52:38 2013 Valentin Carriere
+// Last update Wed Nov 20 14:41:08 2013 Valentin Carriere
 //
 function        truncate($file, $cmd)
 {
@@ -23,17 +24,16 @@ function        truncate($file, $cmd)
       return ;
     }
   else
-    writeTable($cmd, $file);
+    writeTable($cmd, $lines);
 }
 
 function        writeTable($cmd, $file)
 {
   $ptr = fopen("./" . $file[0], "r");
-  $contenu = fread($ptr, filesize("./database/table/" . $cmd[1] . ".table"));
+  $contenu = fread($ptr, filesize("./" . $file[0]));
   fclose($ptr);
   $contenu = explode(PHP_EOL, $contenu);
-  print_r($contenu);
- for ($i = 1; isset($contenu[$i]); $i++)
+  for ($i = 2, isset($contenu[$i]); $i++)
     {
       unset($contenu[$i]);
     }
