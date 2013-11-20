@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 12:27:00 2013 Valentin Carriere
-// Last update Wed Nov 20 14:58:31 2013 Valentin Carriere
+// Last update Wed Nov 20 15:05:55 2013 Valentin Carriere
 //
 function        truncate($file, $cmd)
 {
@@ -37,7 +37,7 @@ function        writeTable($cmd, $file)
       echo "Table : '" . $cmd[1] . "' already empty\n";
       return (0);
     }
-for ($i = 1; isset($contenu[$i]); $i++)
+  for ($i = 1; isset($contenu[$i]); $i++)
     unset($contenu[$i]);
   $contenu = array_values($contenu);
   $contenu = implode(PHP_EOL, $contenu);
