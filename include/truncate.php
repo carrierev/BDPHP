@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 12:27:00 2013 Valentin Carriere
-// Last update Wed Nov 20 14:52:38 2013 Valentin Carriere
+// Last update Wed Nov 20 14:55:20 2013 Valentin Carriere
 //
 function        truncate($file, $cmd)
 {
@@ -28,7 +28,7 @@ function        truncate($file, $cmd)
 
 function        writeTable($cmd, $file)
 {
-  $ptr = fopen("./" . $file[0], "r");
+  $ptr = fopen("./database/table/" . $cmd[1] . ".table", "r");
   $contenu = fread($ptr, filesize("./database/table/" . $cmd[1] . ".table"));
   fclose($ptr);
   $contenu = explode(PHP_EOL, $contenu);
@@ -39,7 +39,7 @@ function        writeTable($cmd, $file)
     }
   $contenu = array_values($contenu);
   $contenu = implode(PHP_EOL, $contenu);
-  $ptr = fopen("./" . $file[0], "w");
+  $ptr = fopen("./database/table/" . $cmd[1] . ".table", "w");
   fwrite($ptr, $contenu);
   fclose($ptr);
   /*$filename = "./database/table" . $cmd[1] . ".table";
