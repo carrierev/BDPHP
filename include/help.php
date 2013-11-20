@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 11:55:15 2013 Valentin Carriere
-// Last update Wed Nov 20 12:15:15 2013 Valentin Carriere
+// Last update Wed Nov 20 15:14:53 2013 Valentin Carriere
 //
 function	help()
 {
@@ -47,4 +47,5 @@ function	help()
 	FROM nom_table_1 [, nom_table_2, ...]
 	[WHERE condition_1 [AND condition_2 ...]]
 	[ORDER BY col_tri [DESC]];\n";
+  return (0);
 }
