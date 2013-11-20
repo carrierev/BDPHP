@@ -1,0 +1,35 @@
+#!/usr/local/bin/php
+<?php
+// help.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP/include
+// 
+// Made by Valentin Carriere
+// Login   <carrie_v@etna-alternance.net>
+// 
+// Started on  Wed Nov 20 11:55:15 2013 Valentin Carriere
+// Last update Wed Nov 20 12:02:01 2013 Valentin Carriere
+//
+function	help()
+{
+  echo "Toutes commandes se termine par un ;\n";
+  echo "quit : Permet de quitter le programme\n";
+  echo "show tables : Affiche les tables de la base de donnees\n";
+  echo "desc [nom_table] : Permet de decrire une table\n";
+  echo "CREATE TABLE [nom_table]\n
+(\n
+nom_col_1	type	[OPTIONS],\n
+nom_col_2	type	[OPTIONS],\n
+		...\n
+);\n\n
+Les Types possibles sont:\n
+    integer\n
+    float\n
+    bool\n
+    string\n\n
+[options] : facultatif.\n
+    PRIMARY_KEY : definit la cle primaire de la table. (Il ne peut en avoir qu'une)\n
+	NOT_NULL : Definit un champs comme etant forcement different de NULL\n
+"
+;
+
+
+}
