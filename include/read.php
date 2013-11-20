@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Wed Nov 20 10:52:42 2013 camille pire
+// Last update Wed Nov 20 11:13:40 2013 camille pire
 //
 
 function	read_db($path)
@@ -27,24 +27,44 @@ function	showtab($line)
     print_tab($title, $tab);
 }
 
-function        desctab($file, $cmd)
+function	prepare_desc($title, $table)
 {
-  $lines = read_db($file[0]);
-  for ($i = 0; isset($lines[$i]); $i++)
+  $size = strlen($title);
+  for ($i = 0; isset($table[$i]); $i++)
+    for ($j = 0; isset($table[$i][$j]); $j++)
+      if (strlen($table[$i][$j]) > $size)
+	$size = strlen($table[$i][$j]);
+  for ($i = 0; isset($table[$i]); $i++)
     {
-      if (preg_match_all('#([^;]+);#', $lines[$i], $tab[$i]))
-	if ($tab[$i][0][0] == $cmd[1] . ';')
-	  $res[] = $tab[$i][1];
+      $tmp = '';
+      for ($j = 0; isset($table[$i][$j]); $j++)
+	{
+	  $space =  multi_echo_ret(' ', ($size - strlen($table[$i][$j]) + 1));
+	  $tmp .= $table[$i][$j] . $space;
+	}
+      $tab[] = $tmp;
     }
-  if (isset($res))
-    {
-      $title = $res[0][0];
-      echo $title ."\n";
-      for ($i = 1; isset($res[0][$i]); $i++)
-        {
-	  preg_match_all('#([^,]+)#', $res[0][$i], $tab2[$i]);
-	  $table[] = $tab2[$i][1];
-        }
-    }
-  print_r($table);
+  print_tab($title, $tab);
 }
+
+  function        desctab($file, $cmd)
+  {
+    $lines = read_db($file[0]);
+    for ($i = 0; isset($lines[$i]); $i++)
+      {
+	if (preg_match_all('#([^;]+);#', $lines[$i], $tab[$i]))
+	  if ($tab[$i][0][0] == $cmd[1] . ';')
+	    $res[] = $tab[$i][1];
+      }
+    if (isset($res))
+      {
+	$title = $res[0][0];
+	echo $title ."\n";
+	for ($i = 1; isset($res[0][$i]); $i++)
+	  {
+	    preg_match_all('#([^,]+)#', $res[0][$i], $tab2[$i]);
+	    $table[] = $tab2[$i][1];
+	  }
+      }
+    prepare_desc($title, $table);
+  }
