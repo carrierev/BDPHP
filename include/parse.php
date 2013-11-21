@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:03:13 2013 camille pire
-// Last update Thu Nov 21 17:23:16 2013 camille pire
+// Last update Thu Nov 21 17:25:00 2013 camille pire
 //
 
 //la fonction parse_sql verifie qu'il y a bien un point virgule en fin de ligne
@@ -37,7 +37,5 @@ function	parse_sql(&$param, $fd)
 	  $res[] = $test;
       }
   if (isset($res))
-    {
-      print_r($res);
-      return $res;
-    }}
+    return $res;
+}
