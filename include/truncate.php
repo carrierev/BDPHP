@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 12:27:00 2013 Valentin Carriere
-// Last update Wed Nov 20 15:23:54 2013 Valentin Carriere
+// Last update Thu Nov 21 09:48:35 2013 Valentin Carriere
 //
 function        truncate($file, $cmd)
 {
@@ -44,5 +44,5 @@ function        truncateTable($cmd, $file)
   $ptr = fopen("./database/table/" . $cmd[1] . ".table", "w");
   fwrite($ptr, $contenu);
   fclose($ptr);
-  echo "Table : '" . $cmd[1] . "' truncated\n";
+  echo "-> Table : '" . $cmd[1] . "' truncated\n";
 }

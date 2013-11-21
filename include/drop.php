@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:04:08 2013 camille pire
-// Last update Wed Nov 20 14:40:02 2013 Valentin Carriere
+// Last update Thu Nov 21 09:48:24 2013 Valentin Carriere
 //
 function	drop($file, $cmd)
 {
@@ -42,5 +42,5 @@ function	writeDB($file, $cmd, $nb_line)
   fwrite($ptr, $contenu);
   fclose($ptr);
   unlink("./database/table/" . $cmd[1] . ".table");
-  echo "Table : '" . $cmd[1] . "' dropped\n";
+  echo "-> Table : '" . $cmd[1] . "' dropped\n";
 }
