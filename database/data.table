@@ -1,5 +1,10 @@
 --nom_database--
+<<<<<<< HEAD
 anso;id,integer,primary_key;nom,string,taille,float,not_null;./database/table/anso.table#
 chloe;id,integer,primary_key;nom,string;taille,float,not_null;./database/table/chloe.table#
 cam;id,integer,primary_key;nom,./database/table/cam.table#
 mabite;taille,integer,primary_key;largeur,float,not_null;nom,string,;./database/table/mabite.table#
+=======
+
+eleve;id,integer,primary_key;nom,string,not_null;taille,float,;./database/table/eleve.table#
+>>>>>>> 9121f10d3f076c4c2061744b62a788ae8c2cf9dc

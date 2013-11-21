@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Wed Nov 20 11:53:11 2013 camille pire
+// Last update Thu Nov 21 14:18:29 2013 camille pire
 //
 
 function	read_db($path)
@@ -20,7 +20,7 @@ function	showtab($line)
   for ($i = 1; isset($line[$i]); $i++)
     {
       preg_match('#^([^;]+);#', $line[$i], $res);
-      if ($res[1] != '')
+      if (isset($res[1]))
 	$tab[] = $res[1];
     }
   if (isset($tab) && isset($title))
