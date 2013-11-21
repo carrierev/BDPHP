@@ -1,0 +1,6 @@
+desc eleve;
+create table test
+(
+int     integer    primary_key,
+test bool
+);
