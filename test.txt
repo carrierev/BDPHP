@@ -2,5 +2,11 @@ desc eleve;
 create table test
 (
 int     integer    primary_key,
-test bool
+test bool,
+mabite integer not_null
 );
+desc test;
+show tables;
+drop test;
+show tables;
+touches moi;

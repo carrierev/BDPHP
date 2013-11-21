@@ -5,19 +5,65 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Thu Nov 21 15:01:03 2013 Valentin Carriere
-// Last update Thu Nov 21 17:23:26 2013 Valentin Carriere
+// Last update Thu Nov 21 21:41:52 2013 Valentin Carriere
 //
 function	input_file($file)
 {
   $ptr = fopen($file[1], "r");
   $contenu = fread($ptr, filesize($file[1]));
-  if (preg_match_all('#[^;]+;#', $contenu, $tab))
+  $params = decoup_line($contenu);
+  $cmd = decoup_array($params);
+  for ($i = 0; isset($cmd[$i]) && $i < (count($cmd) - 1); $i++)
+    user_choice($cmd[$i], $file);
+}
+
+function        decoup_line($line)
+{
+  $res = preg_replace('#[ ]{2,}|[\t]#', ' ', $line);
+  return explode(";", $res);
+}
+
+function        decoup_array($test)
+{
+  for ($i = 0; isset($test[$i]); $i++)
     {
-      for ($i = 0; isset($tab[0][$i]); $i++)
+      $temp = explode(" ", $test[$i]);
+      $temp = implode(PHP_EOL, $temp);
+      $temp = explode("\n", $temp);
+      for ($j = 0; isset($temp[$j]); $j++)
 	{
-	  $tab[0][$i] = decoup_params($tab[0][$i]);
-	  $cmd = parse_sql($tab[0][$i], $ptr);
-	  user_choice($cmd, $file);
+	  $temp[$j] = trim(preg_replace('/\s\s+/',' ', $temp[$j]));
+	  $array[$i][$j] = $temp[$j];
 	}
     }
+   for ($i = 1; isset($array[$i]); $i++)
+    {
+      unset($array[$i][0]);
+      $array[$i] = array_values($array[$i]);
+    }
+   $final_array = add_coma($array);
+   for ($i = 1; isset($final_array[$i]); $i++)
+     $final_array[$i] = array_values($final_array[$i]);
+   return $final_array;
+}
+
+function	add_coma($array)
+{
+  $k = 0;
+  for ($i = 0; isset($array[$i]); $i++)
+    {
+      for ($j = 0; isset($array[$i][$j]); $j++)
+	{
+	  if (preg_match_all('#,$#', $array[$i][$j], $tab))
+	    {
+	      $test[$i][$k] = preg_replace('#,$#', '', $array[$i][$j]);
+	      $k++;
+	      $test[$i][$k] = ",";
+	    }
+	  else
+	    $test[$i][$k] = $array[$i][$j];
+	  $k++;
+	}
+    }
+  return $test;
 }
