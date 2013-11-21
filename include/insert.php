@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Thu Nov 21 15:52:52 2013 camille pire
+// Last update Thu Nov 21 19:45:31 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -31,12 +31,65 @@ function	prepare_ins($desc)
       for ($j = 1; isset($res[$j]); $j++)
 	$tab[$i][$j] = $res[$j][0];
     }
-  print_r($tab);
+  return $tab;
 }
+
+function	prepare_val($cmd)
+{
+  $j = 0;
+  for ($i = 3; isset($cmd[$i + 1]); $i++)
+    {
+      if ($cmd[$i - 1] == '(' || $cmd[$i - 1] == ',')
+	{
+	  $j++;
+	  $tab[$j]['id'] = $cmd[$i];
+	}
+      if ($cmd[$i + 1] == ')' || $cmd[$i + 1] == ',')
+	$tab[$j]['val'] = $cmd[$i];
+    }
+  return $tab;
+}
+
+function	test_val($type, $option, $val)
+{
+  if ($option == 'primary_key')
+    {
+      if (gettype($val) == $type)
+	return true;
+    }
+  elseif ($option == 'not_null')
+    {
+      if (gettype($val) == $type)
+	return true;
+    }
+  else
+    {
+      aff_echo('la donne' . $val .' ne sont pas compatible.\n');
+      return false;
+    }
+}
+
+  function	prepare_line($col, $val)
+  {
+    $line = null;
+    for ($i = 0; isset($col[$i][1]); $i++)
+      {
+	for ($j = 1; isset($val[$j]); $j++)
+	  {
+	    if ($col[$i][1] == $val[$j]['id'])
+	      if (test_val($col[$i][2], $col[$i][3], $val[$j]['val']))
+		$line .= $val[$j]['val'] . ';';
+	  }
+      }
+    return $line;
+  }
 
   function	insert($cmd, $file)
   {
     if (!($desc = getdesc($cmd, $file)))
       return ;
     $tab_col = prepare_ins($desc);
+    $tab_val = prepare_val($cmd);
+    $line = prepare_line($tab_col, $tab_val);
+
   }
