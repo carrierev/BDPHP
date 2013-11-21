@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Thu Nov 21 14:18:29 2013 camille pire
+// Last update Thu Nov 21 15:10:59 2013 camille pire
 //
 
 function	read_db($path)
