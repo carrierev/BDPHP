@@ -34,9 +34,16 @@ function	prepare_ins($desc)
   print_r($tab);
 }
 
-  function	insert($cmd, $file)
-  {
-    if (!($desc = getdesc($cmd, $file)))
-      return ;
-    $tab_col = prepare_ins($desc);
-  }
+function	prepare_val($cmd)
+{
+
+}
+
+function	insert($cmd, $file)
+{
+  if (!($desc = getdesc($cmd, $file)))
+    return ;
+  $tab_col = prepare_ins($desc);
+  $tab_val = prepare_val($cmd);
+
+}
