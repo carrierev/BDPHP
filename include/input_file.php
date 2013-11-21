@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Thu Nov 21 15:01:03 2013 Valentin Carriere
-// Last update Thu Nov 21 17:16:55 2013 Valentin Carriere
+// Last update Thu Nov 21 17:23:26 2013 Valentin Carriere
 //
 function	input_file($file)
 {
@@ -17,7 +17,6 @@ function	input_file($file)
 	{
 	  $tab[0][$i] = decoup_params($tab[0][$i]);
 	  $cmd = parse_sql($tab[0][$i], $ptr);
-	  print_r($cmd);
 	  user_choice($cmd, $file);
 	}
     }
