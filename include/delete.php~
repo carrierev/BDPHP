@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 15:22:02 2013 Valentin Carriere
-// Last update Thu Nov 21 09:48:58 2013 Valentin Carriere
+// Last update Thu Nov 21 09:49:53 2013 Valentin Carriere
 //
 function	checkCondition($cmd, $file, $nb_line)
 {
@@ -30,6 +30,7 @@ function	delete($file, $cmd)
 	    $nb_line = $i;
 	    $bool = true;
 	  }
+    }
   if ($bool != true)
     {
       echo  'Unknown table : "' . $cmd[2] . '" in ' . $file[0] . "\n";
@@ -46,7 +47,7 @@ function	delete($file, $cmd)
   fclose($ptr);
   $contenu = explode(PHP_EOL, $contenu);
   for ($i = 1; isset($contenu[$i]); $i++)
-	unset($contenu[$i]);
+    unset($contenu[$i]);
   $contenu = array_values($contenu);
   $contenu = implode(PHP_EOL, $contenu);
   $ptr = fopen("./database/table/" . $cmd[1] . ".table", "w");
@@ -54,4 +55,3 @@ function	delete($file, $cmd)
   fclose($ptr);
   echo "Table : '" . $cmd[1] . "' truncated\n";
 }
-

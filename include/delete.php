@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Wed Nov 20 15:22:02 2013 Valentin Carriere
-// Last update Thu Nov 21 09:49:53 2013 Valentin Carriere
+// Last update Thu Nov 21 10:50:01 2013 Valentin Carriere
 //
 function	checkCondition($cmd, $file, $nb_line)
 {
@@ -13,7 +13,7 @@ function	checkCondition($cmd, $file, $nb_line)
     {
       if ($cmd [$i] == 'where')
 	{
-
+	  echo "test"; 
 	}
    }
 }
@@ -42,16 +42,21 @@ function	delete($file, $cmd)
 
   function        deleteElement($cmd, $file, $nb_line)
 {
-  $ptr = fopen("./database/table/" . $cmd[2] . ".table", "r");
-  $contenu = fread($ptr, filesize("./database/table/" . $cmd[2] . ".table"));
-  fclose($ptr);
-  $contenu = explode(PHP_EOL, $contenu);
-  for ($i = 1; isset($contenu[$i]); $i++)
-    unset($contenu[$i]);
-  $contenu = array_values($contenu);
-  $contenu = implode(PHP_EOL, $contenu);
-  $ptr = fopen("./database/table/" . $cmd[1] . ".table", "w");
-  fwrite($ptr, $contenu);
-  fclose($ptr);
-  echo "Table : '" . $cmd[1] . "' truncated\n";
+  if(checkConditions($cmd, $file, $nb_file) == 0)
+    echo "-> 0 row(s) deleted.";
+  else
+    {
+      $ptr = fopen("./database/table/" . $cmd[2] . ".table", "r");
+      $contenu = fread($ptr, filesize("./database/table/" . $cmd[2] . ".table"));
+      fclose($ptr);
+      $contenu = explode(PHP_EOL, $contenu);
+      for ($i = 1; isset($contenu[$i]); $i++)
+	unset($contenu[$i]);
+      $contenu = array_values($contenu);
+      $contenu = implode(PHP_EOL, $contenu);
+      $ptr = fopen("./database/table/" . $cmd[1] . ".table", "w");
+      fwrite($ptr, $contenu);
+      fclose($ptr);
+      echo "Table : '" . $cmd[1] . "' truncated\n";
+    }
 }
