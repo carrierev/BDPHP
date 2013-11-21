@@ -1,13 +1,3 @@
 --nom_database--
-test;id,integer,primary_key;nom,string,not_null;taille,float,./database/table/test.table#
-truc;id,integer,primary_key;taille,float,nom,string,not_null;;./database/table/truc.table#
-chose;id,integer,primary_key;nom,string,taille,float,not_null;;./database/table/chose.table#
-anso;id,integer,primary_key;nom,string,taille,float,not_null;./database/table/anso.table#
-test;id,integer;./database/table/test.table#
-chloe;id,integer,primary_key;nom,string;taille,float,not_null;./database/table/chloe.table#
-fd;int,integer,primary_key;nam,string,./database/table/fd.table#
-cam;id,integer,primary_key;nom,./database/table/cam.table#
-fo;int,integer,primary_key;nom,taille,float,not_null;./database/table/fo.table#
-thr;int,integer,primary_key;nom,taille,./database/table/thr.table#
-ghr;id,integer,primary_key;nom,taille,./database/table/ghr.table#
-hu;id,integer,primary_key;nom,string,;taille,float,./database/table/hu.table#
+
+eleve;id,integer,primary_key;nom,string,not_null;taille,float,;./database/table/eleve.table#
