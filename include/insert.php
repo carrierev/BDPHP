@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 14:27:28 2013 camille pire
+// Last update Fri Nov 22 14:39:47 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -116,10 +116,10 @@ function	prepare_line($col, $val)
   $l = 0;
   for ($i = 0; isset($col[$i][1]); $i++)
     {
+      if ($col[$i][3] == 'not_null' || $col[$i][3] == 'primary_key')
+	$k++;
       for ($j = 1; isset($val[$j]); $j++)
 	{
-	  if ($col[$i][3] == 'not_null' || $col[$i][3] == 'primary_key')
-	    $k++;
 	  if ($col[$i][1] == $val[$j]['id'])
 	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'],
 			 $col['path'], $val[$j]['id']))
@@ -132,9 +132,9 @@ function	prepare_line($col, $val)
 	}
       $line .= ';';
     }
-  if ($k < $l)
+  if ($k > $l)
     {
-      echo "mabite\n";
+      aff_echo("Insufficient number of arguments.\n");
       return false;
     }
   return $line;
