@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 13:38:57 2013 camille pire
+// Last update Fri Nov 22 13:43:39 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -67,24 +67,24 @@ function	test_type_in($type, $val)
     return false;
 }
 
-    function	test_primary($path, $val, $id)
+function	test_primary($path, $val, $id)
+{
+  $lines = read_db($path);
+  if (preg_match_all('#[^;]+#', $lines[0], $tab))
+    for ($i = 0; isset($tab[0][$i]); $i++)
+      if ($tab[0][$i] == $id)
+	$pk = $i;
+  for ($i = 1; isset($lines[$i]); $i++)
     {
-      $lines = read_db($path);
-      if (preg_match_all('#[^;]+#', $lines[0], $tab))
-	for ($i = 0; isset($tab[0][$i]); $i++)
-	  if ($tab[0][$i] == $id)
-	    $pk = $i;
-      for ($i = 1; isset($lines[$i]); $i++)
-	{
-	  if (preg_match_all('#[^;]+#', $lines[$i], $res))
-	    if ($res[0][$pk] == $val)
-	      {
-		aff_echo("Primary_key already exist.\n");
-		return false;
-	      }
-	}
-      return true;
+      if (preg_match_all('#[^;]+#', $lines[$i], $res))
+	if ($res[0][$pk] == $val)
+	  {
+	    aff_echo("Primary_key already exist.\n");
+	    return false;
+	  }
     }
+  return true;
+}
 
 function	test_val($type, $option, $val, $path, $id)
 {
@@ -116,7 +116,8 @@ function	prepare_line($col, $val)
       for ($j = 1; isset($val[$j]); $j++)
 	{
 	  if ($col[$i][1] == $val[$j]['id'])
-	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'], $col['path'], $val[$j]['id']))
+	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'],
+			 $col['path'], $val[$j]['id']))
 	      $line .= $val[$j]['val'] . ';';
 	}
     }
@@ -131,10 +132,12 @@ function	insert($cmd, $file)
     return ;
   $tab_col = prepare_ins($desc);
   $tab_val = prepare_val($cmd);
-  $line = prepare_line($tab_col, $tab_val);
-  $fd = fopen($tab_col['path'], 'a+');
-  fwrite($fd, $line);
-  fwrite($fd, "\n");
-  fclose($fd);
-  aff_echo("-> Insert done.\n");
+  if ($line = prepare_line($tab_col, $tab_val))
+    {
+      $fd = fopen($tab_col['path'], 'a+');
+      fwrite($fd, $line);
+      fwrite($fd, "\n");
+      fclose($fd);
+      aff_echo("-> Insert done.\n");
+    }
 }
