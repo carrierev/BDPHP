@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 11:47:01 2013 camille pire
+// Last update Fri Nov 22 13:38:57 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -86,46 +86,55 @@ function	test_type_in($type, $val)
       return true;
     }
 
-  function	test_val($type, $option, $val, $path, $id)
-  {
-    if ($option == 'primary_key' && test_primary($path, $val, $id) && test_type_in($type, $val))
-      {
-	return true;
-      }
-    elseif ($option == 'not_null' && test_type_in($type, $val) && isset($val))
-      {
-	return true;
-      }
-    else
-      {
-	aff_echo('Data ' . $val ." is not valid.\n");
-	return false;
-      }
-  }
+function	test_val($type, $option, $val, $path, $id)
+{
+  if ($option == 'primary_key'
+      && test_primary($path, $val, $id)
+      && test_type_in($type, $val))
+    {
+      return true;
+    }
+  elseif ($option == 'not_null'
+	  && test_type_in($type, $val) && isset($val))
+    {
+      return true;
+    }
+  elseif (test_type_in($type, $val))
+    return true;
+  else
+    {
+      aff_echo('Data ' . $val ." is not valid.\n");
+      return false;
+    }
+}
 
-  function	prepare_line($col, $val)
-  {
-    $line = null;
-    for ($i = 0; isset($col[$i][1]); $i++)
-      {
-	for ($j = 1; isset($val[$j]); $j++)
-	  {
-	    if ($col[$i][1] == $val[$j]['id'])
-	      if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'], $col['path'], $val[$j]['id']))
-		$line .= $val[$j]['val'] . ';';
-	  }
-      }
-    if ($i + 1 > $j)
-      $line .= ';';
-    return $line;
-  }
+function	prepare_line($col, $val)
+{
+  $line = null;
+  for ($i = 0; isset($col[$i][1]); $i++)
+    {
+      for ($j = 1; isset($val[$j]); $j++)
+	{
+	  if ($col[$i][1] == $val[$j]['id'])
+	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'], $col['path'], $val[$j]['id']))
+	      $line .= $val[$j]['val'] . ';';
+	}
+    }
+  if ($i + 1 > $j)
+    $line .= ';';
+  return $line;
+}
 
-  function	insert($cmd, $file)
-  {
-    if (!($desc = getdesc($cmd, $file)))
-      return ;
-    $tab_col = prepare_ins($desc);
-    $tab_val = prepare_val($cmd);
-    $line = prepare_line($tab_col, $tab_val);
-    echo $line;
-  }
+function	insert($cmd, $file)
+{
+  if (!($desc = getdesc($cmd, $file)))
+    return ;
+  $tab_col = prepare_ins($desc);
+  $tab_val = prepare_val($cmd);
+  $line = prepare_line($tab_col, $tab_val);
+  $fd = fopen($tab_col['path'], 'a+');
+  fwrite($fd, $line);
+  fwrite($fd, "\n");
+  fclose($fd);
+  aff_echo("-> Insert done.\n");
+}
