@@ -2,6 +2,7 @@
 anso;id,integer,primary_key;nom,string,taille,float,not_null;./database/table/anso.table#
 chloe;id,integer,primary_key;nom,string;taille,float,not_null;./database/table/chloe.table#
 cam;id,integer,primary_key;nom,./database/table/cam.table#
+mabite;taille,integer,primary_key;largeur,float,not_null;nom,string,;./database/table/mabite.table#
 eleve;id,integer,primary_key;nom,string,not_null;taille,float,;./database/table/eleve.table#
 toi;toi,integer,primary_key;moi,bool,;./database/table/toi.table#
 ma;id,integer,primary_key;./database/table/ma.table#
