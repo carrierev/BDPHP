@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Tue Nov 19 16:38:38 2013 camille pire
-// Last update Thu Nov 21 14:23:32 2013 Valentin Carriere
+// Last update Fri Nov 22 09:56:17 2013 camille pire
 //
 function test_type($str)
 {
@@ -40,7 +40,7 @@ function	test_option($str, $option)
 	return true;
       elseif ($bool == true && $str == 'primary_key')
 	{
-	  echo "You can have just one primary_key.\n";
+	  aff_echo("You can have just one primary_key.\n");
 	  return false;
 	}
       else
@@ -57,7 +57,7 @@ function	iftab_exist($cmd, $file)
       preg_match('#^[^;]+#', $lines[$i], $tab);
 	if ($tab[0] == $cmd[2])
 	  {
-	    echo "Table : '" . $cmd[2] . "' already exist.\n";
+	    aff_echo("Table : '" . $cmd[2] . "' already exist.\n");
 	    return true;
 	  }
     }
@@ -96,7 +96,7 @@ function	createTab($cmd, $file)
 	    $dbline .= $cmd[$i] . ',';
 	  else
 	    {
-	      echo "Invalid commande: '" . $cmd[$i] . "'\n";
+	      aff_echo("Invalid commande: '" . $cmd[$i] . "'\n");
 	      return ;
 	    }
 	  $j++;
@@ -108,5 +108,5 @@ function	createTab($cmd, $file)
   if (isset($tbline))
     write_tb($file_name, $tbline);
   write_db($file[0], $dbline);
-  echo "-> Table " . "'" . $cmd[2] . "'" . " created.\n";
+  aff_echo("-> Table " . "'" . $cmd[2] . "'" . " created.\n");
 }
