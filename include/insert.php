@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 09:28:07 2013 camille pire
+// Last update Fri Nov 22 09:37:08 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -78,32 +78,32 @@ function	test_val($type, $option, $val)
     }
   else
     {
-      aff_echo('la donne' . $val .' ne sont pas compatible.\n');
+      aff_echo('la donnee ' . $val .' n\'est pas compatible.\n');
       return false;
     }
 }
 
-  function	prepare_line($col, $val)
-  {
-    $line = null;
-    for ($i = 0; isset($col[$i][1]); $i++)
-      {
-	for ($j = 1; isset($val[$j]); $j++)
-	  {
-	    if ($col[$i][1] == $val[$j]['id'])
-	      if (test_val($col[$i][2], $col[$i][3], $val[$j]['val']))
-		$line .= $val[$j]['val'] . ';';
-	  }
-      }
-    return $line;
-  }
+function	prepare_line($col, $val)
+{
+  $line = null;
+  for ($i = 0; isset($col[$i][1]); $i++)
+    {
+      for ($j = 1; isset($val[$j]); $j++)
+	{
+	  if ($col[$i][1] == $val[$j]['id'])
+	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val']))
+	      $line .= $val[$j]['val'] . ';';
+	}
+    }
+  return $line;
+}
 
-  function	insert($cmd, $file)
-  {
-    if (!($desc = getdesc($cmd, $file)))
-      return ;
-    $tab_col = prepare_ins($desc);
-    $tab_val = prepare_val($cmd);
-    $line = prepare_line($tab_col, $tab_val);
+function	insert($cmd, $file)
+{
+  if (!($desc = getdesc($cmd, $file)))
+    return ;
+  $tab_col = prepare_ins($desc);
+  $tab_val = prepare_val($cmd);
+  $line = prepare_line($tab_col, $tab_val);
 
-  }
+}
