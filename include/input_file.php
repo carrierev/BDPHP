@@ -5,10 +5,13 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Thu Nov 21 15:01:03 2013 Valentin Carriere
-// Last update Fri Nov 22 10:16:57 2013 Valentin Carriere
+// Last update Fri Nov 22 10:36:16 2013 Valentin Carriere
 //
 function	input_file($file)
 {
+  global $option;
+  if (isset($file[2]))
+    $option = $file[2];
   $ptr = fopen($file[1], "r");
   $contenu = fread($ptr, filesize($file[1]));
   $params = decoup_line($contenu);

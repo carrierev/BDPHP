@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Thu Nov 21 15:01:03 2013 Valentin Carriere
-// Last update Thu Nov 21 21:41:52 2013 Valentin Carriere
+// Last update Fri Nov 22 10:16:57 2013 Valentin Carriere
 //
 function	input_file($file)
 {
@@ -56,14 +56,14 @@ function	add_coma($array)
 	{
 	  if (preg_match_all('#,$#', $array[$i][$j], $tab))
 	    {
-	      $test[$i][$k] = preg_replace('#,$#', '', $array[$i][$j]);
+	      $final_array[$i][$k] = preg_replace('#,$#', '', $array[$i][$j]);
 	      $k++;
-	      $test[$i][$k] = ",";
+	      $final_array[$i][$k] = ",";
 	    }
 	  else
-	    $test[$i][$k] = $array[$i][$j];
+	    $final_array[$i][$k] = $array[$i][$j];
 	  $k++;
 	}
     }
-  return $test;
+  return $final_array;
 }
