@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 14:10:08 2013 camille pire
+// Last update Fri Nov 22 14:24:47 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -100,7 +100,7 @@ function	test_val($type, $option, $val, $path, $id)
       return true;
     }
   elseif (test_type_in($type, $val)
-&& $option != 'primary_key' && $option != 'not_null')
+	  && $option != 'primary_key' && $option != 'not_null')
     return true;
   else
     {
@@ -112,20 +112,27 @@ function	test_val($type, $option, $val, $path, $id)
 function	prepare_line($col, $val)
 {
   $line = null;
+  $k = 0;
   for ($i = 0; isset($col[$i][1]); $i++)
     {
       for ($j = 1; isset($val[$j]); $j++)
 	{
+	  if ($col[$i][3] == 'not_null' || $col[$i][3] == 'primary_key')
+	    $k++;
 	  if ($col[$i][1] == $val[$j]['id'])
 	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'],
 			 $col['path'], $val[$j]['id']))
-	      $line .= $val[$j]['val'] . ';';
+	      $line .= $val[$j]['val'];
 	    else
 	      return false;
 	}
+      $line .= ';';
     }
-  if ($i + 1 > $j)
-    $line .= ';';
+  if ($k > $j - 1)
+    {
+      echo "mabite\n";
+      return false;
+    }
   return $line;
 }
 
