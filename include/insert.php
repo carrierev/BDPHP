@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 10:18:07 2013 Valentin Carriere
+// Last update Fri Nov 22 11:47:01 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -52,11 +52,14 @@ function	prepare_val($cmd)
 
 function	test_type_in($type, $val)
 {
-  if ($type == 'integer' && is_int($val))
+  if ($type == 'integer' && is_int((int)$val) && is_numeric($val))
     return true;
-  elseif ($type == 'float' && is_double($val))
+  elseif ($type == 'float' && is_numeric($val))
     return true;
-  elseif ($type == 'bool' && is_bool($val))
+  elseif ($type == 'bool' && ($val == 'true'
+			      || $val == '1'
+			      || $val == 'false'
+			      || $val == '0'))
     return true;
   elseif ($type == 'string' && is_string($val))
     return true;
@@ -64,46 +67,65 @@ function	test_type_in($type, $val)
     return false;
 }
 
-function	test_val($type, $option, $val)
-{
-  if ($option == 'primary_key')
+    function	test_primary($path, $val, $id)
     {
-      if (test_type_in($type, $val))
-	return true;
-    }
-  elseif ($option == 'not_null')
-    {
-      if (test_type_in($type, $val))
-	return true;
-    }
-  else
-    {
-      aff_echo('Data ' . $val .' is not valid.\n');
-      return false;
-    }
-}
-
-function	prepare_line($col, $val)
-{
-  $line = null;
-  for ($i = 0; isset($col[$i][1]); $i++)
-    {
-      for ($j = 1; isset($val[$j]); $j++)
+      $lines = read_db($path);
+      if (preg_match_all('#[^;]+#', $lines[0], $tab))
+	for ($i = 0; isset($tab[0][$i]); $i++)
+	  if ($tab[0][$i] == $id)
+	    $pk = $i;
+      for ($i = 1; isset($lines[$i]); $i++)
 	{
-	  if ($col[$i][1] == $val[$j]['id'])
-	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val']))
-	      $line .= $val[$j]['val'] . ';';
+	  if (preg_match_all('#[^;]+#', $lines[$i], $res))
+	    if ($res[0][$pk] == $val)
+	      {
+		aff_echo("Primary_key already exist.\n");
+		return false;
+	      }
 	}
+      return true;
     }
-  return $line;
-}
 
-function	insert($cmd, $file)
-{
-  if (!($desc = getdesc($cmd, $file)))
-    return ;
-  $tab_col = prepare_ins($desc);
-  $tab_val = prepare_val($cmd);
-  $line = prepare_line($tab_col, $tab_val);
+  function	test_val($type, $option, $val, $path, $id)
+  {
+    if ($option == 'primary_key' && test_primary($path, $val, $id) && test_type_in($type, $val))
+      {
+	return true;
+      }
+    elseif ($option == 'not_null' && test_type_in($type, $val) && isset($val))
+      {
+	return true;
+      }
+    else
+      {
+	aff_echo('Data ' . $val ." is not valid.\n");
+	return false;
+      }
+  }
 
-}
+  function	prepare_line($col, $val)
+  {
+    $line = null;
+    for ($i = 0; isset($col[$i][1]); $i++)
+      {
+	for ($j = 1; isset($val[$j]); $j++)
+	  {
+	    if ($col[$i][1] == $val[$j]['id'])
+	      if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'], $col['path'], $val[$j]['id']))
+		$line .= $val[$j]['val'] . ';';
+	  }
+      }
+    if ($i + 1 > $j)
+      $line .= ';';
+    return $line;
+  }
+
+  function	insert($cmd, $file)
+  {
+    if (!($desc = getdesc($cmd, $file)))
+      return ;
+    $tab_col = prepare_ins($desc);
+    $tab_val = prepare_val($cmd);
+    $line = prepare_line($tab_col, $tab_val);
+    echo $line;
+  }
