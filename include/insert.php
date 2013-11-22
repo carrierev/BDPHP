@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 13:43:39 2013 camille pire
+// Last update Fri Nov 22 13:55:48 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -119,6 +119,8 @@ function	prepare_line($col, $val)
 	    if (test_val($col[$i][2], $col[$i][3], $val[$j]['val'],
 			 $col['path'], $val[$j]['id']))
 	      $line .= $val[$j]['val'] . ';';
+	    else
+	      return false;
 	}
     }
   if ($i + 1 > $j)
