@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Thu Nov 21 19:45:31 2013 camille pire
+// Last update Fri Nov 22 09:22:14 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -50,16 +50,20 @@ function	prepare_val($cmd)
   return $tab;
 }
 
+function	test_type($type, $val)
+{
+}
+
 function	test_val($type, $option, $val)
 {
   if ($option == 'primary_key')
     {
-      if (gettype($val) == $type)
+      if (test_type($type, $val))
 	return true;
     }
   elseif ($option == 'not_null')
     {
-      if (gettype($val) == $type)
+      if (test_type($type, $val))
 	return true;
     }
   else
