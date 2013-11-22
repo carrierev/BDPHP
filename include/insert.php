@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 09:22:14 2013 camille pire
+// Last update Fri Nov 22 09:28:07 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -52,6 +52,16 @@ function	prepare_val($cmd)
 
 function	test_type($type, $val)
 {
+  if ($type == 'integer' && is_int($val))
+    return true;
+  elseif ($type == 'float' && is_double($val))
+    return true;
+  elseif ($type == 'bool' && is_bool($val))
+    return true;
+  elseif ($type == 'string' && is_string($val))
+    return true;
+  else
+    return false;
 }
 
 function	test_val($type, $option, $val)
