@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 // bdphp.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP
 //
@@ -5,7 +6,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Fri Nov 22 13:46:40 2013 Valentin Carriere
+// Last update Fri Nov 22 16:12:52 2013 Valentin Carriere
 require_once('./include/include.php');
 error_reporting (E_ALL);
 
