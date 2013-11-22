@@ -1,0 +1,10 @@
+$> create table ma
+
+(
+
+id integer primary_key
+
+);
+
+-> Table 'ma' created.
+$> 
