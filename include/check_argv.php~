@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Tue Nov 19 10:32:11 2013 Valentin Carriere
-// Last update Fri Nov 22 09:38:25 2013 Valentin Carriere
+// Last update Fri Nov 22 09:44:52 2013 Valentin Carriere
 //
 error_reporting (E_ALL);
 
@@ -62,7 +62,7 @@ function    is_file_exist($argc, $argv)
     {
       if ($argv[$i] == "-i" && file_exists($argv[$i + 1]))
 	$file[1] = $argv[$i + 1];
-      else if ($argv[$i] == "-o" && file_exists($argv[$i + 1]))
+      else if ($argv[$i] == "-o")
 	$file[2] = $argv[$i + 1];
     }
   if (isset($file[1]) && $file[0] == $file[1]

@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:30:38 2013 Valentin Carriere
-// Last update Fri Nov 22 09:47:53 2013 Valentin Carriere
+// Last update Fri Nov 22 09:57:15 2013 Valentin Carriere
 require_once('./include/include.php');
 error_reporting (E_ALL);
 
@@ -16,8 +16,6 @@ function	main($argc, $argv)
     exit (0);
   else
     $file_options = is_options($argc, $argv);
-  if (!isset($file_options[1]))
-    echo "Option -i file doesnt exist\n";
   if (isset($file_options[1]))
     input_file($file_options);
   if (isset($file_options[2]))
