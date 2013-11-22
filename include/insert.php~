@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Thu Nov 21 14:50:33 2013 camille pire
-// Last update Fri Nov 22 10:18:07 2013 Valentin Carriere
+// Last update Fri Nov 22 09:49:06 2013 camille pire
 //
 
 function	getdesc($cmd, $file)
@@ -78,7 +78,7 @@ function	test_val($type, $option, $val)
     }
   else
     {
-      aff_echo('Data ' . $val .' is not valid.\n');
+      aff_echo('la donnee ' . $val .' n\'est pas compatible.\n');
       return false;
     }
 }

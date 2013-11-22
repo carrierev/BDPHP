@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Tue Nov 19 15:56:40 2013 Valentin Carriere
-// Last update Fri Nov 22 10:21:22 2013 Valentin Carriere
+// Last update Thu Nov 21 09:59:41 2013 Valentin Carriere
 //
 function	user_choice($cmd, $file)
 {
@@ -30,6 +30,6 @@ function	user_choice($cmd, $file)
   else if ($cmd[0] == 'delete' && $cmd[1] == 'from' && isset($cmd[2]))
     delete($file, $cmd);
   else
-    aff_echo("Syntax error\n");
+    echo "Syntax error\n";
   return (0);
 }

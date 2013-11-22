@@ -5,7 +5,7 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Tue Nov 19 10:32:11 2013 Valentin Carriere
-// Last update Fri Nov 22 09:58:13 2013 Valentin Carriere
+// Last update Fri Nov 22 10:09:18 2013 Valentin Carriere
 //
 error_reporting (E_ALL);
 
@@ -13,7 +13,7 @@ function	check_argc($argc)
 {
   if ($argc == 1)
     {
-      echo "Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n";
+      aff_echo("Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n");
       return (0);
     }
   else
@@ -39,7 +39,7 @@ function	is_options($argc, $argv)
     }
   else if (in_array("-", $argv))
     {
-      echo "Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n";
+      aff_echo("Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n");
       return (0);
     }
   else
@@ -55,7 +55,7 @@ function    is_file_exist($argc, $argv)
     $file[0] = $argv[$argc - 1];
   else
     {
-      echo "Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n";
+      aff_echo("Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n");
       return 0;
     }
   for ($i = 0; $i < $argc; $i++)
@@ -68,7 +68,7 @@ function    is_file_exist($argc, $argv)
   if (isset($file[1]) && $file[0] == $file[1]
       || isset($file[2]) && $file[0] == $file[2])
     {
-      echo "Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n";
+      aff_echo("Usage: ./bdphp.php [-i inputfile] [-o outputfile] dbfile\n");
       return (0);
     }
   return ($file);
