@@ -9,3 +9,4 @@ desc test;
 show tables;
 drop test;
 show tables;
+touches moi;

@@ -1,8 +1,12 @@
 --nom_database--
-mabite;id,int,primary_key;nom,char,not_null;taille,int,;./table/mabite.table
-test;test,test,test,./database/table/test.table#
-table;test,int,./database/table/table.table#
-biteaaaaaaaaaaaaaaaaa;id,int,not_null;nom,string,./database/table/mabite.table#
-wesh;wesh,wesh,wesh;wesh,wesh,./database/table/wesh.table#
-rienafoutre;fifou,fifa,fitou;fita,feta,foueta;./database/table/rienafoutre.table#
-chloe;id,int,pk;nom,char,nn;./database/table/chloe.table#
+<<<<<<< HEAD
+anso;id,integer,primary_key;nom,string,taille,float,not_null;./database/table/anso.table#
+chloe;id,integer,primary_key;nom,string;taille,float,not_null;./database/table/chloe.table#
+cam;id,integer,primary_key;nom,./database/table/cam.table#
+mabite;taille,integer,primary_key;largeur,float,not_null;nom,string,;./database/table/mabite.table#
+=======
+
+eleve;id,integer,primary_key;nom,string,not_null;taille,float,;./database/table/eleve.table#
+>>>>>>> 9121f10d3f076c4c2061744b62a788ae8c2cf9dc
+toi;toi,integer,primary_key;moi,bool,;./database/table/toi.table#
+ma;id,integer,primary_key;./database/table/ma.table#

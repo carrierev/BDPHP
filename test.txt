@@ -1,4 +1,5 @@
 desc eleve;
+show tables;
 create table test
 (
 int     integer    primary_key,
