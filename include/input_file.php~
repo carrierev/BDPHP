@@ -5,10 +5,13 @@
 // Login   <carrie_v@etna-alternance.net>
 // 
 // Started on  Thu Nov 21 15:01:03 2013 Valentin Carriere
-// Last update Fri Nov 22 10:16:57 2013 Valentin Carriere
+// Last update Fri Nov 22 10:59:37 2013 Valentin Carriere
 //
 function	input_file($file)
 {
+  global $option;
+  if (isset($file[2]))
+    $option = $file[2];
   $ptr = fopen($file[1], "r");
   $contenu = fread($ptr, filesize($file[1]));
   $params = decoup_line($contenu);
@@ -19,8 +22,18 @@ function	input_file($file)
 
 function        decoup_line($line)
 {
+  write_cmd($line . "\n");
   $res = preg_replace('#[ ]{2,}|[\t]#', ' ', $line);
-  return explode(";", $res);
+  //  if (preg_match_all('#(?![\'"])[^ ]+(?<![\'"])|".+"|\'.+\'#', $res, $tab))
+  //   for ($i = 0; isset($tab[0][$i]); $i++)
+  //    $return[] = $tab[0][$i];
+  print_r($res);
+  return ($res);
+  // $res = preg_replace('#[ ]{2,}|[\t]#', ' ', $line);
+ //  return explode(";", $res);
+//  $res = explode (";", $res);
+//  print_r($res);
+//  return $res;
 }
 
 function        decoup_array($test)

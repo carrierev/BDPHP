@@ -1,13 +1,13 @@
 desc eleve;
 show tables;
-create table test
+create table guitare
 (
-int     integer    primary_key,
-test bool,
-mabite integer not_null
+id     integer    primary_key,
+modele string not_null,
+prix float
 );
-desc test;
+desc guitare;
 show tables;
-drop test;
+drop guitare;
 show tables;
 touches moi;
