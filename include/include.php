@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 13:16:09 2013 camille pire
-// Last update Fri Nov 22 16:11:11 2013 Valentin Carriere
+// Last update Sat Nov 23 19:54:09 2013 camille pire
 //
 
 // globale
@@ -30,4 +30,5 @@ require_once('./include/check_argv.php');
 require_once('./include/create.php');
 require_once('./include/user_choice.php');
 require_once('./include/create_table.php');
+require_once('./include/prepare_insert.php');
 require_once('./include/insert.php');

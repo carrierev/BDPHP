@@ -1,11 +1,11 @@
 <?php
 // select.php for  in /Users/valentin/Desktop/ProjetPHP/BDPHP/include
-// 
+//
 // Made by Valentin Carriere
 // Login   <carrie_v@etna-alternance.net>
-// 
+//
 // Started on  Fri Nov 22 16:08:31 2013 Valentin Carriere
-// Last update Sat Nov 23 11:44:47 2013 camille pire
+// Last update Sat Nov 23 19:41:29 2013 camille pire
 //
 function        select($file, $cmd)
 {

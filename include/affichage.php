@@ -5,16 +5,18 @@
 // Login   <carrie_v@etna-alternance.net>
 //
 // Started on  Mon Nov 18 10:31:24 2013 Valentin Carriere
-// Last update Fri Nov 22 10:33:10 2013 camille pire
+// Last update Sat Nov 23 19:42:29 2013 camille pire
 //
 
 function        aff_prompt()
 {
   aff_echo("$> ");
 }
+
 function	write_cmd($str)
 {
   global $option;
+
   if ($option != null)
     {
       $fd = fopen($option, 'a+');
@@ -26,6 +28,7 @@ function	write_cmd($str)
 function	aff_echo($str)
 {
   global $option;
+
   if ($option != null)
     {
       $fd = fopen($option, 'a+');

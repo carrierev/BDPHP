@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Tue Nov 19 16:38:38 2013 camille pire
-// Last update Fri Nov 22 10:11:43 2013 Valentin Carriere
+// Last update Sat Nov 23 19:49:06 2013 camille pire
 //
 function test_type($str)
 {
@@ -21,7 +21,6 @@ function test_type($str)
 function	test_option($str, $option)
 {
   static $bool = false;
-
   if ($option == 0 && $bool == false)
     {
       aff_echo("You must set one primary_key.\n");
