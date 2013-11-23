@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Fri Nov 22 10:18:31 2013 Valentin Carriere
+// Last update Sat Nov 23 11:40:49 2013 camille pire
 //
 
 function	read_db($path)
@@ -27,7 +27,7 @@ function	showtab($line)
     print_tab($title, $tab);
 }
 
-function	prepare_desc($title, $table)
+function	prepare_desc($title, $table, $option)
 {
   $size = strlen($title);
   for ($i = 0; isset($table[$i]); $i++)
@@ -43,6 +43,12 @@ function	prepare_desc($title, $table)
 	  $tmp .= $table[$i][$j] . $space;
 	}
       $tab[] = $tmp;
+    }
+  if ($option == 's')
+    {
+      $title = $tab[0];
+      unset($tab[0]);
+      $tab = array_values($tab);
     }
   print_tab($title, $tab);
 }
@@ -70,5 +76,5 @@ function        desctab($file, $cmd)
 	  $table[] = $tab2[$i][1];
 	}
     }
-  prepare_desc($title, $table);
+  prepare_desc($title, $table, 'd');
 }
