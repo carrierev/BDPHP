@@ -1,4 +1,2 @@
 --database_default--
-eleve;id,integer,primary_key;nom,string,not_null;taille,float,;./database/table/eleve.table#
-toi;toi,integer,primary_key;moi,bool,;./database/table/toi.table#
-ma;id,integer,primary_key;./database/table/ma.table#
+

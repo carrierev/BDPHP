@@ -1,0 +1,29 @@
+create table guitare
+(
+id     integer    primary_key,
+modele string not_null,
+prix float
+);
+show tables;
+desc guitare;
+insert guitare
+(
+id = 1,
+modele = Gibson,
+prix = 777.5
+);
+insert guitare
+(
+id = 2,
+modele = Fender,
+prix = 1000
+);
+insert guitare
+(
+id = 3,
+modele = Epiphone,
+prix = 200.5
+);
+select * from guitare;
+show tables;
+commande qui marche pas;
