@@ -5,7 +5,7 @@
 // Login   <pire_c@etna-alternance.net>
 //
 // Started on  Mon Nov 18 16:02:41 2013 camille pire
-// Last update Mon Nov 25 09:38:44 2013 Valentin Carriere
+// Last update Mon Nov 25 09:35:03 2013 Valentin Carriere
 //
 
 function	read_db($path)
@@ -26,7 +26,7 @@ function	showtab($line)
   if (isset($tab) && isset($title))
     print_tab($title, $tab);
   else
-    aff_echo("No tables in the database.\n");
+    echo "Pas de table";
 }
 
 function	prepare_desc($title, $table, $option)
