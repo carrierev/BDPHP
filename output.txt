@@ -388,4 +388,88 @@ $> drop guitare;
 $> show tables;
 
 No tables in the database.
+$> show tables;
+
+No tables in the database.
+$> create table guitare
+(
+id     integer    primary_key,
+modele string not_null,
+prix float
+);
+show tables;
+desc guitare;
+insert guitare
+(
+id = 1,
+modele = Gibson,
+prix = 777.5
+);
+insert guitare
+(
+id = 2,
+modele = Fender,
+prix = 1000
+);
+insert guitare
+(
+id = 3,
+modele = Epiphone,
+prix = 200.5
+);
+select * from guitare;
+show tables;
+commande qui marche pas;
+
+-> Table 'guitare' created.
++--------------------+
+|  database_default  |
++--------------------+
+| guitare            |
++--------------------+
+1 rows in set
++-------------------------------------------+
+|                  guitare                   |
++-------------------------------------------+
+| id           integer      primary_key     |
+| modele       string       not_null        |
+| prix         float                        |
++-------------------------------------------+
+3 rows in set
+-> Insert done.
+-> Insert done.
+-> Insert done.
++----------------------------------+
+|  id        modele    prix        |
++----------------------------------+
+| 1         Gibson    777.5        |
+| 2         Fender    1000         |
+| 3         Epiphone  200.5        |
++----------------------------------+
+3 rows in set
++--------------------+
+|  database_default  |
++--------------------+
+| guitare            |
++--------------------+
+1 rows in set
+Syntax error
+$> show tables;
+
++--------------------+
+|  database_default  |
++--------------------+
+| guitare            |
++--------------------+
+1 rows in set
+$> select * from guitare;
+
++----------------------------------+
+|  id        modele    prix        |
++----------------------------------+
+| 1         Gibson    777.5        |
+| 2         Fender    1000         |
+| 3         Epiphone  200.5        |
++----------------------------------+
+3 rows in set
 $> 

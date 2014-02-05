@@ -1,2 +1,3 @@
 --database_default--
 
+guitare;id,integer,primary_key;modele,string,not_null;prix,float,;./database/table/guitare.table#
